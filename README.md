@@ -3,7 +3,7 @@ Auflistung aller wichtigen Quellen für Informationen zum Studium in der Medieni
 
 ## Get started
 
-Um die Präsentation zu starten muss man das Repo clonen zuerst clonen.
+Um die Präsentation zu starten muss man das Repo zuerst clonen.
 In den Ordner wechseln und dann im Terminal folgende Anweisungen ausführen.
 
 ```sh
