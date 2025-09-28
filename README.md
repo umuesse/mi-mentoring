@@ -4,7 +4,7 @@ Auflistung aller wichtigen Quellen für Informationen zum Studium in der Medieni
 ## Get started
 
 Um die Präsentation zu starten muss man das Repo zuerst clonen.
-In den Ordner wechseln und dann im Terminal folgende Anweisungen ausführen.
+Danach im Terminal in den heruntergeladenen Ordner navigieren und folgende Anweisungen ausführen:
 
 ```sh
 pnpm install
