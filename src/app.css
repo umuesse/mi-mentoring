@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/700.css';
+/*
+	CSS Variables For Theming
+	https://github.com/hakimel/reveal.js/blob/master/css/theme/template/exposer.scss
+*/
+
+
+:root {
+    /* Grundfarben - nur einmal definiert */
+    --color-primary: #efefef;
+    --color-link: #dd1166;
+    --color-white: #ffffff;
+    --color-bg: #2b2b2b;
+    
+    /* Schriftarten - nur einmal definiert */
+    --font-primary: 'Roboto';
+    
+    /* Abstände - nur einmal definiert */
+    --spacing-block: 0.5em;
+    --spacing-heading: 0.5em 0 0.5em 0;
+    
+    /* Abgeleitete Variablen für reveal.js */
+    --mainColor: var(--color-primary);
+    --headingColor: var(--color-primary);
+    --headingFont: var(--font-primary);
+    --headingLineHeight: 1.2;
+    --headingLetterSpacing: normal;
+    --headingTextTransform: none;
+    --headingTextShadow: none;
+    --headingFontWeight: normal;
+    --heading1TextShadow: none;
+    --heading1Size: 2em;
+    --heading2Size: 1.5em;
+    --heading3Size: 1.2em;
+    --heading4Size: 1em;
+    --codeFont: var(--font-primary);
+    --linkColor: var(--color-link);
+    --linkColorHover: var(--color-link);
+    --blockMargin: var(--spacing-block);
+    --headingMargin: var(--spacing-heading);
+    --selectionBackgroundColor: var(--color-primary);
+    --selectionColor: var(--color-white);
+    --overlayElementBgColor: rgba(147, 19, 206, 0.9);
+    --overlayElementFgColor: var(--color-white);
+
+    --r-background-color: var(--color-bg);
+	--r-main-font: var(--headingFont);
+	--r-heading-font: var(--headingFont);
+	--r-link-color: var(--linkColor);
+	--r-link-color-hover: var(--linkColorHover);
+    --r-main-color: var(--mainColor);
+    --r-block-margin: var(--blockMargin);
+    --r-heading-margin: var(--headingMargin);
+    --r-heading-font: var(--headingFont);
+    --r-heading-color: var(--headingColor);
+    --r-heading-line-height: var(--headingLineHeight);
+    --r-heading-letter-spacing: var(--headingLetterSpacing);
+    --r-heading-text-transform: var(--headingTextTransform);
+    --r-heading-text-shadow: var(--headingTextShadow);
+    --r-heading-font-weight: var(--headingFontWeight);
+    --r-heading1-text-shadow: var(--heading1TextShadow);
+    --r-heading1-size: var(--heading1Size);
+    --r-heading2-size: var(--heading2Size);
+    --r-heading3-size: var(--heading3Size);
+    --r-heading4-size: var(--heading4Size);
+    --r-code-font: var(--codeFont);
+    --r-link-color: var(--linkColor);
+    --r-link-color-dark: #00a02a;
+    --r-link-color-hover: var(--linkColorHover);
+    --r-selection-background-color: var(--selectionBackgroundColor);
+    --r-selection-color: var(--selectionColor);
+    --r-overlay-element-bg-color: var(--overlayElementBgColor);
+    --r-overlay-element-fg-color: var(--overlayElementFgColor);
+
+}
+
+.hljs {
+	background: none;
+}
+
+.hljs-title,
+.hljs-keyword {
+	font-weight: normal;
+}
+
+.reveal pre,
+.reveal code {
+	overflow: hidden !important;
+}
+
+.reveal pre {
+	box-shadow: none;
+}
+
+/* Diamond list style für ul-Elemente in Slides */
+.reveal .slides ul {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.reveal .slides ul li {
+	position: relative;
+	padding-left: 2em;
+	margin-bottom: 0.5em;
+}
+
+.reveal .slides ul li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0.3em;
+	width: 0.8em;
+	height: 0.8em;
+	background-image: url('/src/lib/assets/diamond.svg');
+	background-size: contain;
+	background-repeat: no-repeat;
+}
