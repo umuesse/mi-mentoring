@@ -96,6 +96,29 @@
 	box-shadow: none;
 }
 
+/* Inhaltliche Begrenzung und Typografie in Slides */
+.reveal .slides .mi-slide-content {
+	max-width: min(96vw, 1200px);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+/* Kleinere Fließtextelemente unterhalb der Headings */
+.reveal .slides .mi-slide-content h1 + p,
+.reveal .slides .mi-slide-content h2 + p,
+.reveal .slides .mi-slide-content h3 + p {
+	font-size: 0.9rem;
+	margin-top: -0.25rem;
+}
+
+/* Standard-Textgröße im Content leicht reduzieren, Headings bleiben unverändert */
+.reveal .slides .mi-slide-content p,
+.reveal .slides .mi-slide-content li {
+	font-size: 1.5rem;
+}
+
 /* Diamond list style für ul-Elemente in Slides */
 .reveal .slides ul {
 	list-style-type: none;
