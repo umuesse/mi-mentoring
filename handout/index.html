@@ -1,0 +1,899 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Starting Guide Medieninformatik · WiSe 2026/27</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--mi-magenta: #dd1166;
+				--mi-magenta-dark: #be0f58;
+				--mi-violet: #9313ce;
+				--mi-green: #00ad2f;
+				--mi-blue: #4952e1;
+				--mi-ink: #1a1a1a;
+				--mi-muted: #5c5c5c;
+				--mi-line: #e6e6e8;
+				--mi-soft: #faf7f9;
+				--mi-white: #ffffff;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			html {
+				font-size: 10.5pt;
+			}
+
+			body {
+				margin: 0;
+				color: var(--mi-ink);
+				background: var(--mi-white);
+				font-family: 'PT Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-weight: 400;
+				line-height: 1.45;
+			}
+
+			h1,
+			h2,
+			h3,
+			.cover-kicker,
+			.cover-title,
+			.cover-sub {
+				font-family: 'Roboto Slab', Georgia, serif;
+			}
+
+			a {
+				color: var(--mi-violet);
+				text-decoration: underline;
+				text-decoration-thickness: 1px;
+				text-underline-offset: 2px;
+			}
+
+			a:hover {
+				color: var(--mi-magenta);
+			}
+
+			.page {
+				max-width: 210mm;
+				margin: 0 auto;
+				padding: 0 16mm 16mm;
+			}
+
+			/* —— Cover —— */
+			.cover {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				margin: 0 -16mm 10mm;
+				padding: 0 16mm 10mm;
+				break-after: page;
+			}
+
+			.brand-bar {
+				display: flex;
+				height: 8mm;
+				margin: 0 -16mm;
+			}
+
+			.brand-bar span {
+				flex: 1;
+			}
+
+			.brand-bar .m {
+				background: var(--mi-magenta);
+			}
+			.brand-bar .v {
+				background: var(--mi-violet);
+			}
+			.brand-bar .g {
+				background: var(--mi-green);
+			}
+			.brand-bar .b {
+				background: var(--mi-blue);
+			}
+
+			.cover-inner {
+				padding: 18mm 4mm 0;
+				flex: 1;
+			}
+
+			.cover-logo {
+				height: 22mm;
+				width: auto;
+				margin-bottom: 14mm;
+			}
+
+			.cover-kicker {
+				margin: 0 0 8mm;
+				font-size: 11pt;
+				font-weight: 600;
+				letter-spacing: 0.22em;
+				text-transform: uppercase;
+				color: var(--mi-violet);
+			}
+
+			.cover-title {
+				margin: 0 0 6mm;
+				font-size: 42pt;
+				font-weight: 700;
+				line-height: 0.95;
+				letter-spacing: -0.03em;
+			}
+
+			.cover-sub {
+				margin: 0 0 10mm;
+				font-size: 18pt;
+				font-weight: 400;
+				color: var(--mi-muted);
+			}
+
+			.cover-meta {
+				max-width: 140mm;
+				padding-top: 8mm;
+				border-top: 3px solid var(--mi-green);
+				font-size: 12pt;
+				color: var(--mi-ink);
+			}
+
+			.cover-meta strong {
+				display: block;
+				margin-bottom: 2mm;
+				font-size: 13pt;
+			}
+
+			.cover-foot {
+				padding: 0 4mm;
+				font-size: 10pt;
+				color: var(--mi-muted);
+			}
+
+			/* —— Content —— */
+			h2 {
+				margin: 9mm 0 4mm;
+				padding-bottom: 2.5mm;
+				border-bottom: 2.5px solid var(--mi-green);
+				font-size: 16pt;
+				font-weight: 700;
+				color: var(--mi-violet);
+				line-height: 1.2;
+				break-after: avoid;
+			}
+
+			h2 .num {
+				margin-right: 2mm;
+				color: var(--mi-magenta);
+			}
+
+			h3 {
+				margin: 5.5mm 0 2mm;
+				font-size: 12pt;
+				font-weight: 600;
+				color: var(--mi-ink);
+				break-after: avoid;
+			}
+
+			p {
+				margin: 0 0 3mm;
+			}
+
+			ul,
+			ol {
+				margin: 0 0 3.5mm;
+				padding-left: 5mm;
+			}
+
+			li {
+				margin-bottom: 1.4mm;
+			}
+
+			ul li::marker {
+				color: var(--mi-magenta);
+			}
+
+			blockquote {
+				margin: 4mm 0 5mm;
+				padding: 3.5mm 0 3.5mm 5mm;
+				border-left: 4px solid var(--mi-magenta);
+				background: linear-gradient(90deg, var(--mi-soft), transparent 70%);
+				break-inside: avoid;
+			}
+
+			blockquote p {
+				margin: 0;
+				font-family: 'Roboto Slab', Georgia, serif;
+				font-size: 11.5pt;
+				font-style: italic;
+				line-height: 1.4;
+			}
+
+			blockquote footer {
+				margin-top: 2mm;
+				font-family: 'PT Sans', sans-serif;
+				font-size: 9.5pt;
+				font-style: normal;
+				color: var(--mi-muted);
+			}
+
+			.lede {
+				margin-bottom: 4mm;
+				color: var(--mi-muted);
+			}
+
+			/* —— Checklist —— */
+			.checks {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 2.5mm 5mm;
+				margin: 0 0 5mm;
+				padding: 0;
+				list-style: none;
+			}
+
+			.checks li {
+				display: flex;
+				align-items: center;
+				gap: 3mm;
+				margin: 0;
+				padding: 2.8mm 3.5mm;
+				background: var(--mi-soft);
+				border-left: 3px solid var(--mi-magenta);
+			}
+
+			.checks b {
+				display: inline-flex;
+				width: 7mm;
+				height: 7mm;
+				align-items: center;
+				justify-content: center;
+				border-radius: 50%;
+				background: var(--mi-magenta);
+				color: #fff;
+				font-size: 9pt;
+				flex-shrink: 0;
+			}
+
+			/* —— Tables —— */
+			table {
+				width: 100%;
+				margin: 0 0 5mm;
+				border-collapse: collapse;
+				font-size: 9.6pt;
+				break-inside: avoid;
+			}
+
+			th,
+			td {
+				padding: 2.2mm 2.8mm;
+				text-align: left;
+				vertical-align: top;
+				border-bottom: 1px solid var(--mi-line);
+			}
+
+			th {
+				background: var(--mi-violet);
+				color: #fff;
+				font-weight: 700;
+				border-bottom: none;
+			}
+
+			tr:nth-child(even) td {
+				background: #fbf8fc;
+			}
+
+			td:first-child {
+				font-weight: 700;
+				white-space: nowrap;
+			}
+
+			table.wrap td:first-child {
+				white-space: normal;
+			}
+
+			code {
+				font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+				font-size: 0.92em;
+				background: #f3f3f5;
+				padding: 0.1em 0.35em;
+			}
+
+			.note {
+				margin: 0 0 4mm;
+				font-size: 10pt;
+				color: var(--mi-muted);
+			}
+
+			.pill-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 2mm;
+				margin: 0 0 5mm;
+			}
+
+			.pill {
+				padding: 1.6mm 3.5mm;
+				border: 1px solid var(--mi-violet);
+				color: var(--mi-violet);
+				font-size: 9.5pt;
+				font-weight: 700;
+			}
+
+			.contact-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 3mm;
+				margin: 0 0 5mm;
+			}
+
+			.card {
+				padding: 3.5mm 4mm 3mm;
+				border-top: 3px solid var(--mi-magenta);
+				background: var(--mi-soft);
+				break-inside: avoid;
+			}
+
+			.card h3 {
+				margin-top: 0;
+				color: var(--mi-violet);
+			}
+
+			.card p:last-child {
+				margin-bottom: 0;
+			}
+
+			.toc {
+				columns: 2;
+				column-gap: 10mm;
+				margin: 0 0 6mm;
+				padding: 0;
+				list-style: none;
+			}
+
+			.toc li {
+				margin: 0 0 2.2mm;
+				break-inside: avoid;
+			}
+
+			.toc a {
+				color: var(--mi-ink);
+				text-decoration: none;
+				font-weight: 700;
+			}
+
+			.toc a span {
+				color: var(--mi-magenta);
+				margin-right: 2mm;
+			}
+
+			.closing {
+				margin-top: 8mm;
+			}
+
+			@media print {
+				body {
+					background: #fff;
+				}
+
+				.page {
+					max-width: none;
+					padding: 0 4mm 4mm;
+				}
+
+				a {
+					color: var(--mi-violet);
+				}
+
+				.cover {
+					height: 255mm;
+					margin: 0 -4mm 0;
+					padding: 0 4mm 8mm;
+				}
+
+				.brand-bar {
+					margin: 0 -4mm;
+				}
+			}
+
+			@page {
+				size: A4;
+				margin: 14mm 14mm 16mm;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page">
+			<section class="cover">
+				<div>
+					<div class="brand-bar" aria-hidden="true">
+						<span class="m"></span><span class="v"></span><span class="g"></span><span class="b"></span>
+					</div>
+					<div class="cover-inner">
+						<img
+							class="cover-logo"
+							src="../static/img/logo-th-koeln.png"
+							alt="Logo Technische Hochschule Köln"
+							width="180"
+							height="96"
+						/>
+						<p class="cover-kicker">Medieninformatik · TH Köln</p>
+						<h1 class="cover-title">Hello MI</h1>
+						<p class="cover-sub">Starting Guide</p>
+						<div class="cover-meta">
+							<strong>Mentoring · Wintersemester 2026/27</strong>
+							Campus Gummersbach · Steinmüllerallee 1, 51643 Gummersbach
+						</div>
+					</div>
+				</div>
+				<p class="cover-foot">
+					Handout zum Mentoring-Termin. Alle Links sind anklickbar. Bei Unsicherheiten: lieber früh fragen.
+				</p>
+			</section>
+
+			<h2 id="inhalt">Inhalt</h2>
+			<ol class="toc">
+				<li><a href="#switch"><span>01</span> Mentaler Switch</a></li>
+				<li><a href="#zugang"><span>02</span> Zuerst erledigen</a></li>
+				<li><a href="#campus"><span>03</span> Campus Gummersbach</a></li>
+				<li><a href="#bachelor"><span>04</span> Bachelor Medieninformatik</a></li>
+				<li><a href="#master"><span>05</span> Master Medieninformatik</a></li>
+				<li><a href="#orga"><span>06</span> Studium organisieren</a></li>
+				<li><a href="#pruefung"><span>07</span> Prüfungen und Lernen</a></li>
+				<li><a href="#ki"><span>08</span> Umgang mit KI</a></li>
+				<li><a href="#tools"><span>09</span> Software und Tools</a></li>
+				<li><a href="#hilfe"><span>10</span> Anlaufstellen</a></li>
+				<li><a href="#leben"><span>11</span> Campusleben</a></li>
+				<li><a href="#links"><span>12</span> Downloads und Kanäle</a></li>
+			</ol>
+
+			<h2 id="switch"><span class="num">01</span> Mentaler Switch</h2>
+			<p class="lede">Von der Schule ins Studium ändert sich vor allem die Verantwortung.</p>
+			<blockquote>
+				<p>Schule: Aufgaben werden klar vorgegeben.<br />Studium: Selbstständigkeit und Eigeninitiative sind gefragt.</p>
+			</blockquote>
+			<ul>
+				<li>Niemand kontrolliert Anwesenheit oder Hausaufgaben. Der Lernfortschritt liegt bei euch.</li>
+				<li>Die <strong>Prüfungsanmeldung in CaMS</strong> ist aktive Pflicht — sie passiert nicht automatisch.</li>
+				<li>Höheres Stofftempo, weniger Wiederholung. Selbststudium ist Standard. <strong>Lerngruppen</strong> sind fast notwendig.</li>
+				<li>Durchfallen kann passieren, ist aber keine Katastrophe. Die Prüfungsordnung regelt die Fehlversuche.</li>
+				<li>Nachfragen bei Dozierenden ist erwünscht — ihr müsst selbst aktiv werden.</li>
+				<li><strong>sMail</strong> ist rechtsverbindliche Kommunikation. E-Mails regelmäßig checken.</li>
+				<li>Fristen (Prüfung, Rückmeldung, Urlaubssemester) selbst im Blick behalten.</li>
+				<li>
+					Beratung (Studienzweifel, Mental Health, Finanzierung) jetzt merken:
+					<a href="https://www.th-koeln.de/informatik-und-ingenieurwissenschaften/informatik-und-ingenieurwissenschaften/beratung_19432.php">Beratung am Campus GM</a>
+				</li>
+			</ul>
+			<blockquote>
+				<p>Der Mensch mit seinen Bedürfnissen steht im Zentrum der Medieninformatik.</p>
+				<footer>— Studiengangsphilosophie</footer>
+			</blockquote>
+
+			<h2 id="zugang"><span class="num">02</span> Zuerst erledigen</h2>
+			<ol class="checks">
+				<li><b>1</b> eduroam einrichten</li>
+				<li><b>2</b> campusID und E-Mail aktivieren</li>
+				<li><b>3</b> MFA hinterlegen</li>
+				<li><b>4</b> GMID registrieren</li>
+			</ol>
+			<table>
+				<thead>
+					<tr>
+						<th>Was</th>
+						<th>Wofür</th>
+						<th>Link</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>campusID</td>
+						<td>Login für fast alle Dienste. Daten in der Immatrikulations-Mail.</td>
+						<td><a href="https://campusid.th-koeln.de/">campusid.th-koeln.de</a></td>
+					</tr>
+					<tr>
+						<td>MFA</td>
+						<td>Zusätzlicher Schutz (App, E-Mail, Passkey)</td>
+						<td><a href="https://www.th-koeln.de/hochschule/zwei-faktor-authentisierung-2fa_83214.php">2FA-Infos</a></td>
+					</tr>
+					<tr>
+						<td>sMail</td>
+						<td><code>vorname.nachname@smail.th-koeln.de</code> — rechtsverbindlich</td>
+						<td><a href="https://webmail.th-koeln.de/login.php">Webmail</a></td>
+					</tr>
+					<tr>
+						<td>eduroam</td>
+						<td>WLAN an Hochschulen weltweit</td>
+						<td><a href="https://www.th-koeln.de/hochschule/eduroam_25369.php">eduroam</a></td>
+					</tr>
+					<tr>
+						<td>VPN</td>
+						<td>Hochschulnetz von außen</td>
+						<td><a href="https://www.th-koeln.de/hochschule/vpn---virtual-private-network_26952.php">VPN</a></td>
+					</tr>
+					<tr>
+						<td>CaMS</td>
+						<td>Bescheinigungen, Personendaten; ab Nov. 2026 Prüfungen</td>
+						<td><a href="https://cams.th-koeln.de/">cams.th-koeln.de</a></td>
+					</tr>
+					<tr>
+						<td>GMID</td>
+						<td>PC-Pools, Praktikumstool, Server. Erstaccount mit campusID. Terminal: 3. Etage.</td>
+						<td><a href="https://id.gm.th-koeln.de/">id.gm.th-koeln.de</a></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h2 id="campus"><span class="num">03</span> Campus Gummersbach</h2>
+			<ul>
+				<li>
+					<a href="https://www.th-koeln.de/mam/downloads/deutsch/hochschule/fakultaeten/informatik_und_ingenieurwissenschaften/lageplan_campus_gummersbach.pdf">Lageplan Campus GM</a>
+					(Stand September 2026)
+				</li>
+				<li>Raumnummern: <strong>Ebene.Gebäude</strong>, z. B. <code>3.216</code></li>
+				<li>
+					<strong>MultiCa</strong> jedes Semester validieren (Bibliothek, Mensa, danach Parkplatz):
+					<a href="https://www.th-koeln.de/studium/studierendenausweis-multica_361.php">Studierendenausweis</a>
+				</li>
+			</ul>
+			<div class="card">
+				<h3>Erstsemesterbegrüßung</h3>
+				<p>
+					<strong>Freitag, 25.09.2026, 10:00–16:00 Uhr</strong> · Hörsaal 0.401/0.402<br />
+					Begrüßung, Kickoffs, Labore, Bibliotheksführung, Info-Points<br />
+					<a href="https://www.th-koeln.de/hochschule/erstsemesterbegruessung-am-campus-gummersbach_116742.php">th-koeln.de → Erstsemesterbegrüßung</a>
+				</p>
+			</div>
+
+			<h2 id="bachelor"><span class="num">04</span> Bachelor Medieninformatik</h2>
+			<p>
+				Medieninformatik verbindet Informatik, Design und Kommunikation. Das Grundstudium ist mit verwandten
+				Informatik-Studiengängen gemeinsam; ein Wechsel ist bis Beginn des 3. Semesters vergleichsweise einfach.
+			</p>
+			<ul>
+				<li><a href="https://www.medieninformatik.th-koeln.de/study/bachelor/erstsemester/">Ersti-Seite</a> — Module, Stundenplan, Mentoring</li>
+				<li><a href="https://www.medieninformatik.th-koeln.de/study/bachelor">Curriculum Bachelor</a></li>
+				<li><a href="https://www.medieninformatik.th-koeln.de/mi-5.0/medieninformatik-bachelor/modulhandbuch-bpo5/#studienverlaufsplan">Studienverlaufsplan BPO5</a></li>
+				<li><a href="https://www.th-koeln.de/studium/medieninformatik-bachelor--ordnungen-und-formulare_3963.php">Prüfungsordnung Bachelor</a></li>
+			</ul>
+			<h3>Module im 1. Fachsemester</h3>
+			<table>
+				<thead>
+					<tr>
+						<th>Modul</th>
+						<th>Dozierende</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Algorithmen und Programmierung 1</td>
+						<td>Prof. Dr. Christian Kohls, Prof. Dr. Uwe van Heesch</td>
+					</tr>
+					<tr>
+						<td>Einführung in die Medieninformatik</td>
+						<td>Prof. Dr. Elisabeth Kaliva</td>
+					</tr>
+					<tr>
+						<td>Mathematik 1</td>
+						<td>Prof. Dr. Dietlind Zühlke</td>
+					</tr>
+					<tr>
+						<td>Screendesign</td>
+						<td>Prof. Christian Noss</td>
+					</tr>
+					<tr>
+						<td>Theoretische Informatik</td>
+						<td>Prof. Dr. Florian Niebling</td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="note">Beschreibungen und ILU-Links: Ersti-Seite der Medieninformatik.</p>
+
+			<h2 id="master"><span class="num">05</span> Master Medieninformatik</h2>
+			<ul>
+				<li><a href="https://www.medieninformatik.th-koeln.de/study/master">Curriculum Master</a></li>
+				<li>
+					<a href="https://www.medieninformatik.th-koeln.de/mi-5.0/medieninformatik-master/semester/2026-wise/">Lehrveranstaltungen und Guided Projects WiSe 2026/27</a>
+				</li>
+			</ul>
+			<p>Schwerpunkte:</p>
+			<div class="pill-row">
+				<span class="pill">Designing for User Experiences</span>
+				<span class="pill">Developing Interactive Systems</span>
+				<span class="pill">Exploring Advanced Interactive Media</span>
+			</div>
+
+			<h2 id="orga"><span class="num">06</span> Studium organisieren</h2>
+			<p>
+				<strong>MATE</strong> bündelt Stundenplan (Kürzel, Raum, Dozierende) und Modulhandbuch:
+				<a href="https://mate.gm.th-koeln.de/">mate.gm.th-koeln.de</a>
+			</p>
+			<h3>Kürzel im Stundenplan</h3>
+			<p class="note">Anwesenheitspflicht steht in der jeweiligen Modulbeschreibung.</p>
+			<table class="wrap">
+				<thead>
+					<tr>
+						<th>Kürzel</th>
+						<th>Typ</th>
+						<th>Bedeutung</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>V</td>
+						<td>Vorlesung</td>
+						<td>Größere Gruppe, meist ohne Anwesenheitspflicht. Stoff wird selten wiederholt.</td>
+					</tr>
+					<tr>
+						<td>S</td>
+						<td>Seminar</td>
+						<td>Kleinere Gruppen, Referate, Diskussion, aktive Mitarbeit.</td>
+					</tr>
+					<tr>
+						<td>P</td>
+						<td>Praktikum</td>
+						<td>Labor/Rechner. Häufig Anwesenheitspflicht. Testate und Abgaben.</td>
+					</tr>
+					<tr>
+						<td>Ü</td>
+						<td>Übung</td>
+						<td>Anwendung des Stoffs. Manchmal Bonuspunkte für die Klausur.</td>
+					</tr>
+					<tr>
+						<td>T</td>
+						<td>Tutorium</td>
+						<td>Freiwillig, oft von Studierenden geleitet. Bitte nutzen.</td>
+					</tr>
+				</tbody>
+			</table>
+			<ul>
+				<li>
+					<a href="https://www.th-koeln.de/informatik-und-ingenieurwissenschaften/informatik-und-ingenieurwissenschaften/termine-und-fristen_19440.php">Semesterplan / Termine und Fristen</a>
+				</li>
+				<li>
+					<a href="https://www.th-koeln.de/informatik-und-ingenieurwissenschaften/informatik-und-ingenieurwissenschaften/rund-ums-studium_19430.php">Rund ums Studium</a>
+				</li>
+				<li>
+					<a href="https://hops.gm.th-koeln.de:8080/apex/f?p=139:1">HOPS</a> — Prüfungspläne ca. einen Monat vorher
+				</li>
+			</ul>
+
+			<h2 id="pruefung"><span class="num">07</span> Prüfungen und Lernen</h2>
+			<p>
+				<strong>Medieninformatik:</strong> An- und Abmeldung ab November 2026 im
+				<a href="https://cams.th-koeln.de/">CaMS-Studienplaner</a>. Termine und Räume zusätzlich in
+				<a href="https://hops.gm.th-koeln.de:8080/apex/f?p=139:1">HOPS</a>.
+			</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Tool</th>
+						<th>Wofür</th>
+						<th>Link</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>ILU</td>
+						<td>Kursmaterial, Lernplattform</td>
+						<td><a href="https://ilu.th-koeln.de">ilu.th-koeln.de</a></td>
+					</tr>
+					<tr>
+						<td>TH Spaces</td>
+						<td>Lern-Community</td>
+						<td><a href="https://spaces.th-koeln.de/">spaces.th-koeln.de</a></td>
+					</tr>
+					<tr>
+						<td>Sciebo</td>
+						<td>30 GB Cloud (nichtkommerziell)</td>
+						<td><a href="https://www.th-koeln.de/hochschule/sciebo_21988.php">Sciebo an der TH</a></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h2 id="ki"><span class="num">08</span> Umgang mit KI</h2>
+			<p>
+				KI-Kompetenz gehört zum Berufsbild. Tools ersetzen das Lernen nicht: Ergebnisse könnt ihr nur beurteilen,
+				wenn ihr Grundlagen (Code, Mathematik, Konzepte) selbst beherrscht.
+			</p>
+			<ul>
+				<li>Ob KI erlaubt ist, entscheidet das <strong>Modul</strong>. Im Zweifel bei Dozierenden nachfragen.</li>
+				<li>Prüfungsleistungen persönlich erbringen. KI nur als <strong>zugelassenes und gekennzeichnetes</strong> Hilfsmittel.</li>
+			</ul>
+			<table class="wrap">
+				<thead>
+					<tr>
+						<th>Angebot</th>
+						<th>Hinweis</th>
+						<th>Link</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>THKI Chat</td>
+						<td>Login mit campusID, ohne Weitergabe der campusID-Daten</td>
+						<td><a href="https://ki.th-koeln.de/">ki.th-koeln.de</a></td>
+					</tr>
+					<tr>
+						<td>Handreichung</td>
+						<td>Regeln, Kennzeichnung, Zitieren</td>
+						<td>
+							<a href="https://www.th-koeln.de/mam/downloads/deutsch/studium/rundumsstudium/thki_chat_handreichung_studierende_v07.pdf">PDF</a>
+						</td>
+					</tr>
+					<tr>
+						<td>Academic Cloud</td>
+						<td>GWDG, Login mit campusID, verschiedene Modelle</td>
+						<td><a href="https://academiccloud.de/">academiccloud.de</a></td>
+					</tr>
+					<tr>
+						<td>Recherche &amp; KI</td>
+						<td>Bibliothek: Potenziale und Grenzen (Halluzinationen)</td>
+						<td>
+							<a href="https://www.th-koeln.de/hochschulbibliothek/recherche--ki_134488.php">Bibliothek</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h2 id="tools"><span class="num">09</span> Software und Tools</h2>
+			<p>
+				Campuslizenzen (Adobe Creative Cloud, Citavi, Microsoft, MATLAB, think-cell u. a.):
+				<a href="https://www.th-koeln.de/hochschule/software_25067.php">Software für Studierende</a>.
+				Bezug oft über den
+				<a href="https://www.th-koeln.de/hochschule/onthehub-estore_73530.php">OnTheHub eStore</a>
+				(campusID).
+			</p>
+			<p>
+				Weitere Education-Angebote ohne Campus-IT-Support:
+				<a href="https://www.th-koeln.de/hochschule/linksammlung-software-fuer-studierende_28123.php">Linksammlung</a>.
+				Kollaboration: Miro, Figma, JetBrains Education, GitHub Education.
+			</p>
+			<p>
+				Tools der Medieninformatik:
+				<a href="https://www.medieninformatik.th-koeln.de/tools/">medieninformatik.th-koeln.de/tools</a>
+			</p>
+			<ul>
+				<li><a href="https://www.medieninformatik.th-koeln.de/tools/github">Git &amp; GitHub</a> — früh relevant</li>
+				<li><a href="https://www.medieninformatik.th-koeln.de/tools/verleih">Verleih</a> — Kameras, Licht, Ton</li>
+				<li><a href="https://www.medieninformatik.th-koeln.de/tools/styleguide">Styleguide</a> — Präsentationen und Poster</li>
+				<li><a href="https://www.medieninformatik.th-koeln.de/tools/wissenschaftliches-arbeiten">Wissenschaftliches Arbeiten</a></li>
+				<li><a href="https://www.medieninformatik.th-koeln.de/tools/software">Software-Liste der Module</a></li>
+			</ul>
+
+			<h2 id="hilfe"><span class="num">10</span> Anlaufstellen</h2>
+			<div class="contact-grid">
+				<div class="card">
+					<h3>Studienbüro</h3>
+					<p>
+						Einschreibung, Beurlaubung, Prüfungen, Bescheinigungen<br />
+						Raum <strong>1.126b</strong> ·
+						<a href="mailto:studium-gm@th-koeln.de">studium-gm@th-koeln.de</a><br />
+						Matrikelnummer in jeder Mail angeben.
+					</p>
+				</div>
+				<div class="card">
+					<h3>Fachschaft</h3>
+					<p>
+						Raum <strong>1.123</strong> ·
+						<a href="mailto:info@fachschaftgm.de">info@fachschaftgm.de</a><br />
+						<a href="https://fachschaftgm.de/">fachschaftgm.de</a> ·
+						<a href="https://www.instagram.com/fachschaftgm/">Instagram</a> ·
+						<a href="https://discord.gg/tgHyeAVzp">Discord</a>
+					</p>
+				</div>
+				<div class="card">
+					<h3>MI-Mentoren</h3>
+					<p>
+						Simon Porten, Uwe Müsse<br />
+						<a href="mailto:mimentor@gm.fh-koeln.de">mimentor@gm.fh-koeln.de</a><br />
+						<a href="https://www.medieninformatik.th-koeln.de/study/bachelor/erstsemester/">Ersti-Seite</a>
+					</p>
+				</div>
+				<div class="card">
+					<h3>Gleichstellung</h3>
+					<p>
+						Aline Kamp, Fakultät<br />
+						<a href="https://www.th-koeln.de/personen/aline.kamp/">Personenprofil</a>
+					</p>
+				</div>
+			</div>
+			<table class="wrap">
+				<thead>
+					<tr>
+						<th>Angebot</th>
+						<th>Kontakt</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Psychosoziale Beratung (AStA)</td>
+						<td>
+							Mi 9:00–13:00 Uhr, Raum <strong>1.112</strong> ·
+							<a href="https://www.th-koeln.de/studium/beratung-bei-psycho-sozialen-problemen_64638.php">Infos</a>
+						</td>
+					</tr>
+					<tr>
+						<td>Mental Health Campus GM</td>
+						<td>
+							u. a. Volker Schaefer, Uwe Müsse, Simon Porten ·
+							<a href="https://www.th-koeln.de/informatik-und-ingenieurwissenschaften/informatik-und-ingenieurwissenschaften/beratung_19432.php">Beratung</a>
+						</td>
+					</tr>
+					<tr>
+						<td>Finanzierung</td>
+						<td>
+							<a href="https://www.th-koeln.de/studium/finanzierung-und-foerderung_208.php">BAföG, Kredite, Jobs</a>
+						</td>
+					</tr>
+					<tr>
+						<td>Familienservice / Beeinträchtigung</td>
+						<td>
+							<a href="https://www.th-koeln.de/hochschule/familienfreundlichkeit_3759.php">Kind</a>
+							·
+							<a href="https://www.th-koeln.de/studium/unterstuetzung-im-studium_123932.php">Beeinträchtigung</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<ul>
+				<li>
+					ADV-Labor GM (GMID, Netzzugang): Raum <strong>3.206 oder 3.207</strong> ·
+					<a href="https://www.gm.th-koeln.de/advlabor/">gm.th-koeln.de/advlabor</a>
+				</li>
+				<li><a href="https://www.th-koeln.de/hochschule/lehr-lern-plattformen_115864.php">ILU-Support</a></li>
+				<li><a href="https://www.th-koeln.de/hochschule/campus-it_3866.php">CampusIT</a></li>
+				<li>
+					<a href="https://www.th-koeln.de/hochschulbibliothek/hochschulbibliothek_3862.php">Bibliothek</a>
+					·
+					<a href="https://www.th-koeln.de/hochschulbibliothek/informationen-fuer-studienanfaengerinnen_81392.php">Infos für Erstis</a>
+				</li>
+			</ul>
+
+			<h2 id="leben"><span class="num">11</span> Campusleben</h2>
+			<ul>
+				<li>Mensa: <a href="https://www.kstw.de/gastronomie/speiseplan">Speiseplan KStW</a></li>
+				<li><a href="https://hochschulsport-koeln.de/">Hochschulsport</a> — Köln und Gummersbach</li>
+				<li>Testbar (3. Etage) und Teeküche als Aufenthaltsorte</li>
+				<li>Lerngruppen bilden. Fahrgemeinschaften helfen z. B. bei Ausfall der RB25.</li>
+				<li><a href="https://www.th-koeln.de/studium/deutschlandstipendium_225.php">Deutschlandstipendium</a></li>
+			</ul>
+
+			<h2 id="links"><span class="num">12</span> Downloads und Kanäle</h2>
+			<h3>Offizielle Unterlagen</h3>
+			<ul>
+				<li>
+					<a href="https://www.th-koeln.de/mam/downloads/deutsch/hochschule/fakultaeten/informatik_und_ingenieurwissenschaften/starthilfe_-_ersti-guide_campus_gummersbach_2026.pdf">Starthilfe · Ersti-Guide 2026 (PDF)</a>
+				</li>
+				<li>
+					<a href="https://www.th-koeln.de/mam/downloads/deutsch/hochschule/fakultaeten/informatik_und_ingenieurwissenschaften/ansprechpartner_studienbereich_informatik_0925.pdf">Ansprechpartner*innen Informatik (PDF)</a>
+				</li>
+				<li>
+					<a href="https://www.th-koeln.de/informatik-und-ingenieurwissenschaften/campus-gummersbach-informationen-fuer-erstsemester_77721.php">Ersti-Infos Campus Gummersbach</a>
+				</li>
+			</ul>
+			<h3>Medieninformatik</h3>
+			<ul>
+				<li><a href="https://www.medieninformatik.th-koeln.de/">medieninformatik.th-koeln.de</a></li>
+				<li><a href="https://www.instagram.com/mithkoeln/">Instagram @mithkoeln</a></li>
+				<li><a href="https://www.youtube.com/mikoeln">YouTube MI Köln</a></li>
+				<li><a href="https://www.medieninformatik.th-koeln.de/blog/">MI-Blog</a></li>
+			</ul>
+			<h3>Campus</h3>
+			<ul>
+				<li><a href="https://www.instagram.com/thkoeln_gm/">Instagram @thkoeln_gm</a></li>
+				<li>WhatsApp-Kanal und Discord „TH Köln Gummersbach“ — Hinweise auf der Ersti-Seite der Fakultät</li>
+			</ul>
+
+			<blockquote class="closing">
+				<p>Beratungsangebote kennt ihr jetzt. Nutzt sie, bevor aus einer Unsicherheit ein Problem wird.</p>
+				<footer>— Mentoring Medieninformatik · WiSe 2026/27</footer>
+			</blockquote>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+@import 'tailwindcss';
+
+/* Dark-Mode-Variante: Klasse `dark` auf <html> (siehe +page.svelte) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Farben & Typo angelehnt an https://www.medieninformatik.th-koeln.de/study/master/ */
+@theme {
+	--font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+
+	--color-mi-ink: #0a0a0a;
+	--color-mi-muted: #5c5c5c;
+	--color-mi-magenta: #dd1166;
+	--color-mi-magenta-hover: #be0f58;
+	--color-mi-violet: #9313ce;
+	--color-mi-green: #00ad2f;
+	--color-mi-blue: #4952e1;
+	--color-mi-surface: #fefefe;
+	--color-mi-code: #1a1d26;
+	--color-mi-elevated: #f4f4f5;
+}
+
+/* Dunkelmodus: gleiche Akzentfarben, angepasste Flächen & Text */
+.dark {
+	--color-mi-ink: #f4f4f5;
+	--color-mi-muted: #a1a1aa;
+	--color-mi-surface: #121218;
+	--color-mi-elevated: #1c1c24;
+	--color-mi-code: #0d0f14;
+}
+
+@layer base {
+	html {
+		@apply antialiased text-mi-ink bg-mi-surface;
+		font-family: var(--font-sans);
+		font-weight: 300;
+		/* Größere Basis für Lesbarkeit im Hörsaal / hinten im Raum */
+		font-size: 22px;
+	}
+
+	@media (min-width: 640px) {
+		html {
+			font-size: 26px;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		html {
+			font-size: 28px;
+		}
+	}
+
+	body {
+		@apply min-h-dvh;
+	}
+}
